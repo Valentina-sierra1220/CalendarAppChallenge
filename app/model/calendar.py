@@ -36,6 +36,10 @@ class Event:
 
 
 class Day:
+    def __init__(self, date_):
+        self.date_ = date_
+        self.slots = {}
+        self._init_slots()
 
 
 
