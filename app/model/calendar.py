@@ -115,6 +115,16 @@ class Calendar:
                 self.days[date_] = Day(date_)
             self.days[date_].add_event(event_id, start_at, end_at)
 
+        else:
+            event.title = title
+            event.description = description
+            event.start_at = start_at
+            event.end_at = end_at
+
+        for day in self.days.values():
+            if not is_new_date and event_id in day.slots.values():
+                day.delete_event(event.id)
+
 
 
 
