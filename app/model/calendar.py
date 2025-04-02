@@ -101,6 +101,12 @@ class Calendar:
             return [time(h, m) for h in range(24) for m in range(0, 60, 15)]
         return [slot for slot, event_id in self.days[date_].slots.items() if event_id is None]
 
+    def update_event(self, event_id, title, description, date_, start_at, end_at):
+        event = self.events.get(event_id)
+        if not event:
+            event_not_found_error()
+        is_new_date = event.date_ != date_
+
 
 
 
