@@ -64,6 +64,17 @@ class Day:
         if not deleted:
             event_not_found_error()
 
+    def update_event(self, event_id, start_at, end_at):
+        for slot in self.slots:
+            if self.slots[slot] == event_id:
+                self.slots[slot] = None
+        for slot in self.slots:
+            if start_at <= slot < end_at:
+                if self.slots[slot]:
+                    slot_not_available_error()
+                else:
+                    self.slots[slot] = event_id
+
 
 
 
