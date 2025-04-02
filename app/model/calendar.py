@@ -25,6 +25,10 @@ class Event:
         self.reminders.append(Reminder(date_time, type_))
 
     def delete_reminder(self, reminder_index):
+        if 0 <= reminder_index < len(self.reminders):
+            del self.reminders[reminder_index]
+        else:
+            reminder_not_found_error()
 
 
 
