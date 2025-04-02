@@ -125,6 +125,13 @@ class Calendar:
             if not is_new_date and event_id in day.slots.values():
                 day.delete_event(event.id)
 
+    def delete_event(self, event_id):
+        if event_id not in self.events:
+        self.events.pop(event_id)
+        for day in self.days.values():
+            if event_id in day.slots.values():
+                day.delete_event(event_id)
+
 
 
 
