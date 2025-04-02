@@ -41,6 +41,20 @@ class Day:
         self.slots = {}
         self._init_slots()
 
+    def _init_slots(self):
+        for h in range(24):
+            for m in range(0, 60, 15):
+                self.slots[time(h, m)] = None
+
+    def add_event(self, event_id, start_at, end_at):
+        for slot in self.slots:
+            if start_at <= slot < end_at:
+                if self.slots[slot] is not None:
+                    slot_not_available_error()
+        for slot in self.slots:
+            if start_at <= slot < end_at:
+                self.slots[slot] = event_id
+
 
 
 
