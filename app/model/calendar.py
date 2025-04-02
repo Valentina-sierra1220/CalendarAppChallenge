@@ -85,6 +85,10 @@ class Calendar:
             date_lower_than_today_error()
         if date_ not in self.days:
             self.days[date_] = Day(date_)
+        event = Event(title, description, date_, start_at, end_at)
+        self.days[date_].add_event(event.id, start_at, end_at)
+        self.events[event.id] = event
+        return event.id
 
 
 
