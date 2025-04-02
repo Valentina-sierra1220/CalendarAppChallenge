@@ -127,11 +127,12 @@ class Calendar:
 
     def delete_event(self, event_id):
         if event_id not in self.events:
+            event_not_found_error()
         self.events.pop(event_id)
         for day in self.days.values():
             if event_id in day.slots.values():
                 day.delete_event(event_id)
-
+                break
 
 
 
