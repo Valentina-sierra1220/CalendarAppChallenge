@@ -1,5 +1,6 @@
-from dataclasses import dataclass
-from datetime import datetime
+from dataclasses import dataclass, field
+from datetime import datetime, date, time
+from app.services.util import generate_unique_id, reminder_not_found_error, slot_not_available_error, event_not_found_error, date_lower_than_today_error
 @dataclass
 class Reminder:
     EMAIL = "email"
@@ -32,6 +33,10 @@ class Event:
 
     def __str__(self):
         return f"ID: {self.id}\nEvent title: {self.title}\nDescription: {self.description}\nTime: {self.start_at} - {self.end_at}"
+
+
+class Day:
+
 
 
 
