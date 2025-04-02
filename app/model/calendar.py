@@ -106,6 +106,14 @@ class Calendar:
         if not event:
             event_not_found_error()
         is_new_date = event.date_ != date_
+        if is_new_date:
+            self.delete_event(event_id)
+            event = Event(title, description, date_, start_at, end_at)
+            event.id = event_id
+            self.events[event_id] = event
+            if date_ not in self.days:
+                self.days[date_] = Day(date_)
+            self.days[date_].add_event(event_id, start_at, end_at)
 
 
 
