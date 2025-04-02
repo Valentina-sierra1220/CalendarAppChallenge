@@ -24,6 +24,8 @@ class Event:
     def add_reminder(self, date_time, type_=Reminder.EMAIL):
         self.reminders.append(Reminder(date_time, type_))
 
+    def delete_reminder(self, reminder_index):
+
 
 
 
