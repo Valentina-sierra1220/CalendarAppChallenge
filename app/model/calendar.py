@@ -75,6 +75,11 @@ class Day:
                 else:
                     self.slots[slot] = event_id
 
+class Calendar:
+    def __init__(self):
+        self.days = {}
+        self.events = {}
+
 
 
 
