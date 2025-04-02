@@ -80,6 +80,12 @@ class Calendar:
         self.days = {}
         self.events = {}
 
+    def add_event(self, title, description, date_, start_at, end_at):
+        if date_ < datetime.now().date():
+            date_lower_than_today_error()
+        if date_ not in self.days:
+            self.days[date_] = Day(date_)
+
 
 
 
