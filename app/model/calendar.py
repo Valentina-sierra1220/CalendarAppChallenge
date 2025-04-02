@@ -134,6 +134,27 @@ class Calendar:
                 day.delete_event(event_id)
                 break
 
+    def find_events(self, start_at, end_at):
+        events = {}
+        for event in self.events.values():
+            if start_at <= event.date_ <= end_at:
+                if event.date_ not in events:
+                    events[event.date_] = []
+                events[event.date_].append(event)
+        return events
+
+    def delete_reminder(self, event_id, reminder_index):
+        event = self.events.get(event_id)
+        if not event:
+            event_not_found_error()
+        event.delete_reminder(reminder_index)
+
+    def list_reminders(self, event_id):
+        event = self.events.get(event_id)
+        if not event:
+            event_not_found_error()
+        return event.reminders
+
 
 
 
