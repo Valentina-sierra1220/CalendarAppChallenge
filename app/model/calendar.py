@@ -90,6 +90,17 @@ class Calendar:
         self.events[event.id] = event
         return event.id
 
+    def add_reminder(self, event_id, date_time, type_):
+        event = self.events.get(event_id)
+        if not event:
+            event_not_found_error()
+        event.add_reminder(date_time, type_)
+
+    def find_available_slots(self, date_):
+        if date_ not in self.days:
+            return [time(h, m) for h in range(24) for m in range(0, 60, 15)]
+        return [slot for slot, event_id in self.days[date_].slots.items() if event_id is None]
+
 
 
 
